@@ -10,14 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var randomDiceRoll1 : Int = 0
-    var randomDiceRoll2 : Int = 0
+    let fileNamePrefix : String = "dice"
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        updateDiceImage(diceImageView: diceImageView1)
+        updateDiceImage(diceImageView: diceImageView2)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,13 +28,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func rollButtonPressed(_ sender: UIButton) {
-        randomDiceRoll1 = Int(arc4random_uniform(6)) + 1
-        randomDiceRoll2 = Int(arc4random_uniform(6)) + 1
-        
-        let fileNamePrefix : String = "dice"
-        diceImageView1.image = UIImage(named: fileNamePrefix + String(randomDiceRoll1))
-        diceImageView2.image = UIImage(named: fileNamePrefix + String(randomDiceRoll2))
+        updateDiceImage(diceImageView: diceImageView1)
+        updateDiceImage(diceImageView: diceImageView2)
     }
     
+    func updateDiceImage(diceImageView: UIImageView) {
+        let randomDiceRoll = Int(arc4random_uniform(6)) + 1
+        diceImageView.image = UIImage(named: fileNamePrefix + String(randomDiceRoll))
+    }
 }
 
