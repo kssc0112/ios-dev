@@ -1,2 +1,3 @@
 # ios-dev
-repo for ios development
+* repo for learning ios development
+* working with sample template projects
